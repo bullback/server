@@ -50,16 +50,12 @@ class Bubble(models.Model):
     document = models.ForeignKey(Document, related_name='bubbles')
 
 
-class Offset(models.Model):
-    class Meta:
-        app_label = 'server'
-
-
-class Target(models.Model):
-    class Meta:
-        app_label = 'server'
-
-
 class Speech(models.Model):
     class Meta:
         app_label = 'server'
+
+    head = models.CharField(max_length=32)
+    body = models.TextField()
+    path = models.TextField()
+
+    bubble = models.ForeignKey(Bubble, related_name='speechs')

@@ -1,13 +1,15 @@
 # -*- coding:utf-8 -*-
 
 from rest_framework import serializers
-from ..models import Tutorial, Document, Bubble
+from ..models import Tutorial, Document, Bubble, Speech
 
 
-class BubbleSerializer(serializers.HyperlinkedModelSerializer):
+class TutorialSerializer(serializers.HyperlinkedModelSerializer):
+    documents = serializers.HyperlinkedRelatedField(many=True, view_name='document-detail')
+
     class Meta:
-        model = Bubble
-        fields = ('url', 'head', 'body', 'trigger', 'document')
+        model = Tutorial
+        fields = ('url', 'head', 'body', 'documents')
 
 
 class DocumentSerializer(serializers.HyperlinkedModelSerializer):
@@ -18,9 +20,16 @@ class DocumentSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('url', 'host', 'path', 'bubbles', 'tutorial')
 
 
-class TutorialSerializer(serializers.HyperlinkedModelSerializer):
-    documents = serializers.HyperlinkedRelatedField(many=True, view_name='document-detail')
+class BubbleSerializer(serializers.HyperlinkedModelSerializer):
+    speechs = serializers.HyperlinkedRelatedField(many=True, view_name='speech-detail')
 
     class Meta:
-        model = Tutorial
-        fields = ('url', 'head', 'body', 'documents')
+        model = Bubble
+        fields = ('url', 'head', 'body', 'trigger', 'speechs', 'document')
+
+
+class SpeechSerializer(serializers.HyperlinkedModelSerializer):
+
+    class Meta:
+        model = Speech
+        fields = ('url', 'head', 'body', 'path', 'bubble')
