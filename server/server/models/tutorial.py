@@ -23,6 +23,12 @@ class Document(models.Model):
     class Meta:
         app_label = 'server'
 
+    host = models.CharField(max_length=32)
+    path = models.CharField(max_length=1024)
+    # TODO snapshot = models.ImageField(upload_to=)
+
+    tutorial = models.ForeignKey(Tutorial, related_name='document_set')
+
 
 class Bubble(models.Model):
     class Meta:
