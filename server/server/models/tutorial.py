@@ -19,6 +19,15 @@ class Tutorial(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
 
 
+class Feedback(models.Model):
+    class Meta:
+        app_label = 'server'
+
+    content = models.TextField()
+    created_by = models.ForeignKey('auth.User', related_name='write_feedbacks')
+    created_on = models.DateTimeField(auto_now_add=True)
+
+
 class Document(models.Model):
     class Meta:
         app_label = 'server'

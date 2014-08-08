@@ -2,8 +2,8 @@
 
 from rest_framework import viewsets
 from rest_framework import permissions
-from ..models import Tutorial, Document, Bubble, Speech
-from ..serializers import TutorialSerializer, DocumentSerializer, BubbleSerializer, SpeechSerializer, NestedTutorialSerializer
+from ..models import Tutorial, Feedback, Document, Bubble, Speech
+from ..serializers import TutorialSerializer, FeedbackSerializer, DocumentSerializer, BubbleSerializer, SpeechSerializer, NestedTutorialSerializer
 
 
 class TutorialViewSet(viewsets.ModelViewSet):
@@ -14,6 +14,12 @@ class TutorialViewSet(viewsets.ModelViewSet):
     def pre_save(self, obj):
         obj.created_by = self.request.user
         obj.updated_by = self.request.user
+
+
+class FeedbackViewSet(viewsets.ModelViewSet):
+    queryset = Feedback.objects.all()
+    serializer_class = FeedbackSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
 
 class DocumentViewSet(viewsets.ModelViewSet):

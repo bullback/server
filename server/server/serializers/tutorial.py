@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 
 from rest_framework import serializers
-from ..models import Tutorial, Document, Bubble, Speech
+from ..models import Tutorial, Feedback, Document, Bubble, Speech
 
 
 class TutorialSerializer(serializers.HyperlinkedModelSerializer):
@@ -10,6 +10,13 @@ class TutorialSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Tutorial
         fields = ('url', 'title', 'description', 'documents')
+
+
+class FeedbackSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Feedback
+        fields = ('content', 'created_by', 'created_on')
 
 
 class DocumentSerializer(serializers.HyperlinkedModelSerializer):
