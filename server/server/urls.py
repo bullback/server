@@ -18,7 +18,7 @@ router.register(r'speechs', SpeechViewSet)
 router.register(r'comments', CommentViewSet)
 
 urlpatterns = patterns('',
-    url(r'^', include(router.urls)),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^api-list/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 )
