@@ -3,7 +3,8 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from rest_framework.routers import DefaultRouter
-from .views import TutorialViewSet, FeedbackViewSet, DocumentViewSet, BubbleViewSet, SpeechViewSet, NestedTutorialViewSet
+from .views import TutorialViewSet, FeedbackViewSet, DocumentViewSet, BubbleViewSet, SpeechViewSet, CommentViewSet, \
+    NestedTutorialViewSet
 
 admin.autodiscover()
 
@@ -14,6 +15,7 @@ router.register(r'feedbacks', FeedbackViewSet)
 router.register(r'documents', DocumentViewSet)
 router.register(r'bubbles', BubbleViewSet)
 router.register(r'speechs', SpeechViewSet)
+router.register(r'comments', CommentViewSet)
 
 urlpatterns = patterns('',
     url(r'^', include(router.urls)),
