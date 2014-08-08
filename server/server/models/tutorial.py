@@ -11,6 +11,12 @@ class Tutorial(models.Model):
     description = models.TextField()
     # TODO snapshot = models.ImageField(upload_to=)
 
+    amount_star = models.IntegerField()
+    amount_like = models.IntegerField()
+    rating_star = models.FloatField()
+
+    is_public = models.BooleanField(default=False)
+    is_delete = models.BooleanField(default=False)
     is_completed = models.BooleanField(default=False)
 
     created_by = models.ForeignKey('auth.User', related_name='create_tutorials')
