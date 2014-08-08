@@ -52,4 +52,8 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
+# pyCharm
 .idea
+
+# South
+migrations/
