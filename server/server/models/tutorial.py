@@ -47,6 +47,7 @@ class Bubble(models.Model):
     is_init_tutorial = models.BooleanField(default=False)
     is_init_document = models.BooleanField(default=False)
 
+    prev = models.ForeignKey('self', null=True, related_name='next')
     document = models.ForeignKey(Document, related_name='bubbles')
 
 
