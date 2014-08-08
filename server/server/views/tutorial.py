@@ -3,7 +3,7 @@
 from rest_framework import viewsets
 from rest_framework import permissions
 from ..models import Tutorial, Document, Bubble, Speech
-from ..serializers import TutorialSerializer, DocumentSerializer, BubbleSerializer, SpeechSerializer
+from ..serializers import TutorialSerializer, DocumentSerializer, BubbleSerializer, SpeechSerializer, NestedTutorialSerializer
 
 
 class TutorialViewSet(viewsets.ModelViewSet):
@@ -32,3 +32,8 @@ class SpeechViewSet(viewsets.ModelViewSet):
     queryset = Speech.objects.all()
     serializer_class = SpeechSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+
+class NestedTutorialViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Tutorial.objects.all()
+    serializer_class = NestedTutorialSerializer

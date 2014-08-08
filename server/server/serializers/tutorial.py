@@ -33,3 +33,34 @@ class SpeechSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Speech
         fields = ('url', 'head', 'body', 'path', 'bubble')
+
+
+class NestedSpeechSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Speech
+        fields = ('head', 'body', 'path')
+
+
+class NestedBubbleSerializer(serializers.ModelSerializer):
+    speechs = NestedSpeechSerializer(many=True)
+
+    class Meta:
+        model = Bubble
+        fields = ('head', 'body', 'trigger', 'speechs')
+
+
+class NestedDocumentSerializer(serializers.ModelSerializer):
+    bubbles = NestedBubbleSerializer(many=True)
+
+    class Meta:
+        model = Document
+        fields = ('host', 'path', 'bubbles')
+
+
+class NestedTutorialSerializer(serializers.ModelSerializer):
+    documents = NestedDocumentSerializer(many=True)
+
+    class Meta:
+        model = Tutorial
+        fields = ('head', 'body', 'documents')

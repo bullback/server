@@ -3,11 +3,12 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from rest_framework.routers import DefaultRouter
-from .views import TutorialViewSet, DocumentViewSet, BubbleViewSet, SpeechViewSet
+from .views import TutorialViewSet, DocumentViewSet, BubbleViewSet, SpeechViewSet, NestedTutorialViewSet
 
 admin.autodiscover()
 
 router = DefaultRouter()
+router.register(r'nested-tutorials', NestedTutorialViewSet)
 router.register(r'tutorials', TutorialViewSet)
 router.register(r'documents', DocumentViewSet)
 router.register(r'bubbles', BubbleViewSet)
