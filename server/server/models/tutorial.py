@@ -7,8 +7,8 @@ class Tutorial(models.Model):
     class Meta:
         app_label = 'server'
 
-    head = models.CharField(max_length=32)
-    body = models.TextField()
+    title = models.CharField(max_length=32)
+    description = models.TextField()
     # TODO snapshot = models.ImageField(upload_to=)
 
     is_completed = models.BooleanField(default=False)
@@ -39,8 +39,8 @@ class Bubble(models.Model):
         ('C', 'C'),  # click button in html
     )
 
-    head = models.CharField(max_length=32)
-    body = models.TextField()
+    title = models.CharField(max_length=32)
+    description = models.TextField()
 
     trigger = models.CharField(max_length=8, choices=TRIGGER_CHOICES, default='N')
 
@@ -54,8 +54,8 @@ class Speech(models.Model):
     class Meta:
         app_label = 'server'
 
-    head = models.CharField(max_length=32)
-    body = models.TextField()
+    title = models.CharField(max_length=32)
+    description = models.TextField()
     path = models.TextField()
 
     bubble = models.ForeignKey(Bubble, related_name='speechs')

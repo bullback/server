@@ -9,7 +9,7 @@ class TutorialSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Tutorial
-        fields = ('url', 'head', 'body', 'documents')
+        fields = ('url', 'title', 'description', 'documents')
 
 
 class DocumentSerializer(serializers.HyperlinkedModelSerializer):
@@ -25,21 +25,21 @@ class BubbleSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Bubble
-        fields = ('url', 'head', 'body', 'trigger', 'speechs', 'document')
+        fields = ('url', 'title', 'description', 'trigger', 'speechs', 'document')
 
 
 class SpeechSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Speech
-        fields = ('url', 'head', 'body', 'path', 'bubble')
+        fields = ('url', 'title', 'description', 'path', 'bubble')
 
 
 class NestedSpeechSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Speech
-        fields = ('head', 'body', 'path')
+        fields = ('title', 'description', 'path')
 
 
 class NestedBubbleSerializer(serializers.ModelSerializer):
@@ -47,7 +47,7 @@ class NestedBubbleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Bubble
-        fields = ('head', 'body', 'trigger', 'speechs')
+        fields = ('title', 'description', 'trigger', 'speechs')
 
 
 class NestedDocumentSerializer(serializers.ModelSerializer):
@@ -63,4 +63,4 @@ class NestedTutorialSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Tutorial
-        fields = ('head', 'body', 'documents')
+        fields = ('title', 'description', 'documents')
