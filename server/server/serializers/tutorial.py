@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 
 from rest_framework import serializers
-from ..models import Tutorial, Feedback, Document, Bubble, Speech
+from ..models import Tutorial, Feedback, Document, Bubble, Speech, Comment
 
 
 class TutorialSerializer(serializers.HyperlinkedModelSerializer):
@@ -40,6 +40,13 @@ class SpeechSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Speech
         fields = ('url', 'title', 'description', 'path', 'bubble')
+
+
+class CommentSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Comment
+        fields = ('content', 'created_by', 'created_on')
 
 
 class NestedSpeechSerializer(serializers.ModelSerializer):
