@@ -13,7 +13,7 @@ class Tutorial(models.Model):
 
     amount_star = models.IntegerField(default=0)
     amount_like = models.IntegerField(default=0)
-    rating_star = models.FloatField(default=None)
+    rating_star = models.FloatField(null=True, default=None)
 
     is_public = models.BooleanField(default=False)
     is_delete = models.BooleanField(default=False)
