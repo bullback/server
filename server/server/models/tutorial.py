@@ -11,9 +11,9 @@ class Tutorial(models.Model):
     description = models.TextField()
     # TODO snapshot = models.ImageField(upload_to=)
 
-    amount_star = models.IntegerField()
-    amount_like = models.IntegerField()
-    rating_star = models.FloatField()
+    amount_star = models.IntegerField(default=0)
+    amount_like = models.IntegerField(default=0)
+    rating_star = models.FloatField(default=None)
 
     is_public = models.BooleanField(default=False)
     is_delete = models.BooleanField(default=False)
