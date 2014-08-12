@@ -75,12 +75,3 @@ class Speech(models.Model):
     path = models.TextField()
 
     bubble = models.ForeignKey(Bubble, related_name='speechs')
-
-
-class Comment(models.Model):
-    class Meta:
-        app_label = 'server'
-
-    content = models.TextField()
-    created_by = models.ForeignKey('auth.User', related_name='write_comments')
-    created_on = models.DateTimeField(auto_now_add=True)
