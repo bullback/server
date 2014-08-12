@@ -9,14 +9,14 @@ class TutorialSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Tutorial
-        fields = ('url', 'title', 'description', 'documents')
+        fields = ('id', 'url', 'title', 'description', 'documents')
 
 
-class FeedbackSerializer(serializers.ModelSerializer):
+class FeedbackSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Feedback
-        fields = ('content', 'created_by', 'created_on')
+        fields = ('id', 'url', 'content', 'created_by', 'created_on')
 
 
 class DocumentSerializer(serializers.HyperlinkedModelSerializer):
@@ -24,7 +24,7 @@ class DocumentSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Document
-        fields = ('url', 'host', 'path', 'bubbles', 'tutorial')
+        fields = ('id', 'url', 'host', 'path', 'bubbles', 'tutorial')
 
 
 class BubbleSerializer(serializers.HyperlinkedModelSerializer):
@@ -32,21 +32,21 @@ class BubbleSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Bubble
-        fields = ('url', 'title', 'description', 'trigger', 'speechs', 'prev', 'document')
+        fields = ('id', 'url', 'title', 'description', 'trigger', 'speechs', 'prev', 'document')
 
 
 class SpeechSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Speech
-        fields = ('url', 'title', 'description', 'path', 'bubble')
+        fields = ('id', 'url', 'title', 'description', 'path', 'bubble')
 
 
-class CommentSerializer(serializers.ModelSerializer):
+class CommentSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Comment
-        fields = ('content', 'created_by', 'created_on')
+        fields = ('id', 'url', 'content', 'created_by', 'created_on')
 
 
 class NestedSpeechSerializer(serializers.ModelSerializer):
